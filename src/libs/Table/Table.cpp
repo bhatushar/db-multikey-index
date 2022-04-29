@@ -3,7 +3,9 @@
 #include <tuple>
 #include <vector>
 
-namespace Table {
+namespace table {
+    std::vector<Row> records = {};
+
     std::vector<Row> select(const std::vector<Predicate>& predicates) {
         std::vector<Row> data;
         // Test the predicates on reach row
@@ -15,11 +17,11 @@ namespace Table {
                 // If column specified in predicate and row value matches
                 if (std::get<0>(pred.first) && std::get<0>(pred.second) != std::get<0>(row))
                     include = false;
-                if (std::get<1>(pred.first) && std::get<1>(pred.second) != std::get<0>(row))
+                if (std::get<1>(pred.first) && std::get<1>(pred.second) != std::get<1>(row))
                     include = false;
-                if (std::get<2>(pred.first) && std::get<2>(pred.second) != std::get<0>(row))
+                if (std::get<2>(pred.first) && std::get<2>(pred.second) != std::get<2>(row))
                     include = false;
-                if (std::get<3>(pred.first) && std::get<3>(pred.second).compare(std::get<3>(row)) == 0)
+                if (std::get<3>(pred.first) && std::get<3>(pred.second).compare(std::get<3>(row)) != 0)
                     include = false;
 
                 if (include) {

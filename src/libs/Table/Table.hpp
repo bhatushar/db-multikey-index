@@ -5,11 +5,11 @@
 #include <tuple>
 #include <vector>
 
-namespace Table {
+namespace table {
     typedef std::tuple<int, char, float, std::string> Row;
     typedef std::pair<std::tuple<bool, bool, bool, bool>, Row> Predicate;
 
-    std::vector<Row> records;
+    extern std::vector<Row> records;
 
     void insert(const Row&);
     /**
