@@ -4,6 +4,7 @@
 #include <string>
 #include <tuple>
 #include <vector>
+#include <unordered_map>
 
 namespace table {
     typedef std::tuple<int, char, float, std::string> Row;
@@ -11,7 +12,18 @@ namespace table {
 
     extern std::vector<Row> records;
 
-    void insert(const Row&);
+    extern std::unordered_map<int, std::vector<int>> int_index;
+    extern std::unordered_map<char, std::vector<int>> char_index;
+    extern std::unordered_map<float, std::vector<int>> float_index;
+    extern std::unordered_map<std::string, std::vector<int>> string_index;
+
+    /**
+     * @brief Adds a row to the table and indexes column values
+     * 
+     * @param row Data to be inserted
+     */
+    void insert(const Row& row);
+
     /**
      * @brief Select rows from the table which matches the given predicate.
      * The predicates are in SOP form: (c1 AND c2) OR (c3 AND c4 AND c5) OR ...

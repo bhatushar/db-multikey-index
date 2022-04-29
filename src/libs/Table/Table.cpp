@@ -2,9 +2,16 @@
 
 #include <tuple>
 #include <vector>
+#include<unordered_map>
+#include<string>
 
 namespace table {
+    // Initializing static variables
     std::vector<Row> records = {};
+    std::unordered_map<int, std::vector<int>> int_index = {};
+    std::unordered_map<char, std::vector<int>> char_index = {};
+    std::unordered_map<float, std::vector<int>> float_index = {};
+    std::unordered_map<std::string, std::vector<int>> string_index = {};
 
     std::vector<Row> select(const std::vector<Predicate>& predicates) {
         std::vector<Row> data;
@@ -31,5 +38,14 @@ namespace table {
             }
         }
         return data;
+    }
+
+    void insert(const Row& row){
+        records.push_back(row);
+        int row_num = records.size() - 1;
+        int_index[std::get<0>(row)].push_back(row_num);
+        char_index[std::get<1>(row)].push_back(row_num);
+        float_index[std::get<2>(row)].push_back(row_num);
+        string_index[std::get<3>(row)].push_back(row_num);
     }
 } // namespace Table
