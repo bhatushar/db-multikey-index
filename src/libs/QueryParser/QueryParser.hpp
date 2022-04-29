@@ -1,4 +1,4 @@
-#ifndef QUERY_PARSER_HPP
+#if !defined(QUERY_PARSER_HPP)
 #define QUERY_PARSER_HPP
 
 #include <string>
@@ -33,6 +33,5 @@ namespace parser {
      */
     std::vector<table::Predicate> parse_select(const std::vector<std::string>&);
 } // namespace parser
-
 
 #endif // QUERY_PARSER_HPP
