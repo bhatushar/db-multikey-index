@@ -30,7 +30,7 @@ namespace table {
     /**
      * @brief Prints the rows as a formatted table
      */
-    void print(const std::vector<Row>&);
+    void print(const std::vector<Row>&, const long long&);
 }
 
 #endif // TABLE_HPP

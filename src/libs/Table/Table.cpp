@@ -51,7 +51,7 @@ namespace table {
         return data;
     }
 
-    void print(const std::vector<Row>& rows) {
+    void print(const std::vector<Row>& rows, const long long& exec_time) {
         std::cout << "Integer    | Character | Float     | String" << std::endl;
         //            11          11          11          15
         std::cout << std::string(51, '-') << std::endl;
@@ -61,5 +61,7 @@ namespace table {
             std::cout << std::setw(9) << std::get<2>(row) << " | ";
             std::cout << std::setw(14) << std::get<3>(row) << std::endl;
         }
+        std::cout << "Query returned " << rows.size() << " rows in "
+            << exec_time << " ms" << std::endl;
     }
 } // namespace Table
