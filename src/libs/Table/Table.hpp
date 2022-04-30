@@ -10,13 +10,6 @@ namespace table {
     typedef std::tuple<int, char, float, std::string> Row;
     typedef std::pair<std::tuple<bool, bool, bool, bool>, Row> Predicate;
 
-    extern std::vector<Row> records;
-
-    extern std::unordered_map<int, std::vector<int>> int_index;
-    extern std::unordered_map<char, std::vector<int>> char_index;
-    extern std::unordered_map<float, std::vector<int>> float_index;
-    extern std::unordered_map<std::string, std::vector<int>> string_index;
-
     /**
      * @brief Adds a row to the table and indexes column values
      * 
