@@ -12,7 +12,7 @@ namespace table {
 
     /**
      * @brief Adds a row to the table and indexes column values
-     * 
+     *
      * @param row Data to be inserted
      */
     void insert(const Row& row);
@@ -26,6 +26,11 @@ namespace table {
      */
     std::vector<Row> select(const std::vector<Predicate>&);
     std::vector<Row> select_index(const std::vector<Predicate>&);
+
+    /**
+     * @brief Prints the rows as a formatted table
+     */
+    void print(const std::vector<Row>&);
 }
 
 #endif // TABLE_HPP

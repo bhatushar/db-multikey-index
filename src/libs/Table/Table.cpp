@@ -1,9 +1,11 @@
-#include "libs/Table/Table.hpp"
+#include "libs/table/table.hpp"
 
+#include <iomanip>
+#include <iostream>
+#include <string>
 #include <tuple>
+#include <unordered_map>
 #include <vector>
-#include<unordered_map>
-#include<string>
 
 namespace table {
     // Initializing static variables
@@ -12,6 +14,15 @@ namespace table {
     std::unordered_map<char, std::vector<int>> char_index = {};
     std::unordered_map<float, std::vector<int>> float_index = {};
     std::unordered_map<std::string, std::vector<int>> string_index = {};
+
+    void insert(const Row& row) {
+        records.push_back(row);
+        int row_num = records.size() - 1;
+        int_index[std::get<0>(row)].push_back(row_num);
+        char_index[std::get<1>(row)].push_back(row_num);
+        float_index[std::get<2>(row)].push_back(row_num);
+        string_index[std::get<3>(row)].push_back(row_num);
+    }
 
     std::vector<Row> select(const std::vector<Predicate>& predicates) {
         std::vector<Row> data;
@@ -40,12 +51,15 @@ namespace table {
         return data;
     }
 
-    void insert(const Row& row){
-        records.push_back(row);
-        int row_num = records.size() - 1;
-        int_index[std::get<0>(row)].push_back(row_num);
-        char_index[std::get<1>(row)].push_back(row_num);
-        float_index[std::get<2>(row)].push_back(row_num);
-        string_index[std::get<3>(row)].push_back(row_num);
+    void print(const std::vector<Row>& rows) {
+        std::cout << "Integer    | Character | Float     | String" << std::endl;
+        //            11          11          11          15
+        std::cout << std::string(51, '-') << std::endl;
+        for (const auto& row : rows) {
+            std::cout << std::setw(10) << std::get<0>(row) << " | ";
+            std::cout << std::setw(9) << std::get<1>(row) << " | ";
+            std::cout << std::setw(9) << std::get<2>(row) << " | ";
+            std::cout << std::setw(14) << std::get<3>(row) << std::endl;
+        }
     }
 } // namespace Table
