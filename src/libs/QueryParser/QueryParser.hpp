@@ -6,7 +6,7 @@
 #include "libs/table/table.hpp"
 
 namespace parser {
-    static const int TYPE_INSERT = 1, TYPE_SELECT = 2, TYPE_EXIT = 3;
+    static const int TYPE_INSERT = 1, TYPE_SELECT = 2, TYPE_SELECT_INDEXED = 3, TYPE_EXIT = 4;
 
     /**
      * @return Type of the query passed (insert, select or exit)

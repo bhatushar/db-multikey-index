@@ -11,6 +11,7 @@ namespace parser {
     int query_type(const std::string& query) {
         if (query.rfind("insert") == 0) return TYPE_INSERT;
         if (query.rfind("select") == 0) return TYPE_SELECT;
+        if (query.compare("select indexed") == 0) return TYPE_SELECT_INDEXED;
         if (query.compare("exit") == 0) return TYPE_EXIT;
         throw std::invalid_argument("Unknown query type!");
     }
